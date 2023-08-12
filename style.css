@@ -1,0 +1,19 @@
+.converter{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+}
+
+.top-h{
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+#from-curr, #to-curr{
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    background-color: bisque;
+}

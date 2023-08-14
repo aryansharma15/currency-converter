@@ -15,5 +15,30 @@
     font-weight: 600;
     font-family: 'Times New Roman', Times, serif;
     padding: 20px;
-    background-color: bisque;
+    background-color: #ffe4c4;
+    border-radius: 5px;
+    border: 2px solid;
+}
+
+.from-curr-inp, .to-curr-inp{
+    font-size: 30px;
+    padding: 4px 10px;
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.conv-btn{
+    font-size: 20px;
+    padding: 10px 30px;
+    background-color: #20bfc1;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin-top: 80px;
+}
+
+.btn-div{
+    display: flex;
+    width: 100px;
+    margin: auto;
 }

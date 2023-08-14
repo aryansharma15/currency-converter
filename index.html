@@ -15,9 +15,8 @@
 
         <div class="conv-curr">
             <h2>From</h2>
-            <input type="text" class="from-curr-inp">
             <div class="curr-from">
-                <select name="from-curr" id="to-curr">
+                <select name="from-curr" id="from-curr">
                     <option value="GBP">GBP</option>
                     <option value="USD">USD</option>
                     <option value="INR">INR</option>
@@ -29,10 +28,10 @@
                     <option value="ZAR">ZAR</option>
                 </select>
             </div>
+            <input type="text" class="from-curr-inp">
         </div>
         <div class="final-curr">
             <h2>To</h2>
-            <input type="text" class="to-curr-out">
             <div class="curr-to">
                 <select name="to-curr" id="to-curr">
                     <option value="GBP">GBP</option>
@@ -46,7 +45,15 @@
                     <option value="ZAR">ZAR</option>
                 </select>
             </div>
+            <input type="text" class="to-curr-inp">
         </div>
+
     </div>
+    <div class="btn-div">
+        <button class="conv-btn">Convert</button>
+    </div>
+
+
+    <script src="script.js"></script>
 </body>
 </html>

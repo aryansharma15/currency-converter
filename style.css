@@ -28,6 +28,10 @@
     border-radius: 5px;
 }
 
+.to-curr-inp{
+    position: absolute;
+}
+
 .conv-btn{
     font-size: 20px;
     padding: 10px 30px;
@@ -35,6 +39,7 @@
     color: #FFFFFF;
     border-radius: 5px;
     margin-top: 80px;
+    cursor: pointer;
 }
 
 .btn-div{

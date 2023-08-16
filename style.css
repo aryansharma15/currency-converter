@@ -11,6 +11,7 @@ body{
 .top-h{
     width: 400px;
     margin: auto;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -36,7 +37,7 @@ body{
     position: absolute;
 }
 
-.conv-btn{
+/* .conv-btn{
     font-size: 20px;
     padding: 10px 30px;
     background-color: #2053c1;
@@ -48,10 +49,9 @@ body{
 }
 
 .btn-div{
-    /* display: flex; */
     width: 150px;
     margin: auto;
-}
+} */
 
 .swapper{
     width: 100px;
@@ -59,11 +59,12 @@ body{
     margin-top: 100px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .swap{
     font-size: 20px;
-    padding: 7px 10px;
+    padding: 10px 20px;
     background-color: #2053c1;
     color: #FFFFFF;
     border-radius: 5px;
@@ -73,4 +74,6 @@ body{
 
 .rate-box{
     font-size: 20px;
+    width: 200px;
+    text-align: center;
 }

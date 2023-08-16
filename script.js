@@ -1,80 +1,58 @@
-const api = "http://openexchangerates.org/api/latest.json?app_id=477612ac55004129901ccc7f00e61446";
+document.addEventListener("DOMContentLoaded", function () {
+	let fromCurr = document.getElementById("from-curr");
+	let toCurr = document.getElementById("to-curr");
 
-console.log(api);
-let fromCurr = document.getElementById("from-curr");
-let toCurr = document.getElementById("to-curr");
+	let firstCurInput = document.getElementsByClassName("from-curr-inp")[0];
+	let secondCurInput = document.getElementsByClassName("to-curr-inp")[0];
 
-let firstCurNum = document.getElementsByClassName("from-curr-inp")[0];
-let secondCurNum = document.getElementsByClassName("to-curr-inp")[0];
+	let swapButton = document.getElementsByClassName("swap")[0];
 
-let swapButton = document.getElementsByClassName("swap")[0];
-let exchRate = document.getElementsByClassName("rate-box");
+	let conv_btn = document.getElementsByClassName("conv-btn")[0];
 
-let conv_btn = document.getElementsByClassName("conv-btn")[0];
-let inpCur;
-let outCur;
-let searchValue;
+	function updateConvAmt(rate) {
+		const inputValue = parseFloat(firstCurInput.value);
+		const convertedValue = inputValue * rate;
+		secondCurInput.textContent = convertedValue.toFixed(2);
+	}
 
-// fromCurr.addEventListener("change", (event) => {
-// 	inpCur = event.target.value;
-// });
+	function calc() {
+		const inpCur = fromCurr.value;
+		const outCur = toCurr.value;
+		console.log(`https://api.exchangerate-api.com/v4/latest/${inpCur}`);
 
-// toCurr.addEventListener("change", (event) => {
-// 	outCur = event.target.value;
-// });
+		fetch(`https://api.exchangerate-api.com/v4/latest/${inpCur}`)
+			.then((res) => res.json())
+			.then((data) => {
+				const rate = data.rates[outCur];
+				const exchRate = document.getElementsByClassName("rate-box")[0];
+				console.log("exchRate: ", exchRate);
 
-// inpCur = firstCurNum.value;
-// outCur = secondCurNum.value;
+				exchRate.textContent = `1 ${inpCur} = ${rate.toFixed(4)} ${outCur}`;
 
-firstCurNum.addEventListener("input", updateValue);
+				updateConvAmt(rate);
+			});
+	}
 
-function updateValue(x) {
-	searchValue = x.target.value;
-}
-
-// conv_btn.addEventListener("click", getResult);
-
-// function getResult() {
-// 	fetch(`${api}`)
-// 		.then((currency) => {
-// 			return currency.json();
-// 		})
-// 		.then(displayResult)
-// 		.catch((error) => {
-// 			console.error(error);
-// 		});
-// }
-
-// function displayResult(currency) {
-// 	let fromRate = currency.rates[inpCur];
-// 	let toRate = currency.rates[outCur];
-// 	secondCurNum.innerHTML = ((toRate / fromRate) * searchValue).toFixed(2);
-// 	// } else {
-// 	// 	secondCur.innerHTML = "Currency not supported";
-// 	// }
-// }
-
-function calc() {
-	const inpCur = fromCurr.value;
-	const outCur = toCurr.value;
-
-	fetch(`https://api.exchangerate-api.com/v4/latest/${inpCur}`)
-		.then((res) => res.json())
-		.then((data) => {
-			const rate = data.rates[outCur];
-
-			exchRate.textContent = `1 ${fromCurr} = ${rate.toFixed(4)} ${toCurr}`;
+	function listeners() {
+		swapButton.addEventListener("click", () => {
+			[fromCurr.value, toCurr.value] = [toCurr.value, fromCurr.value];
 		});
-}
+		calc();
 
-function listeners() {
-	swapButton.addEventListener("click", () => {
-		[fromCurr.value, toCurr.value] = [toCurr.value, fromCurr.value];
-	});
-	calc();
-}
+		conv_btn.addEventListener("click", () => {
+			calc();
+			console.log("Convert button pressed");
+		});
 
-window.onload = () => {
-	listeners();
-	calc();
-};
+		fromCurr.addEventListener("change", calc);
+		toCurr.addEventListener("change", calc);
+
+		swapButton.addEventListener("click", calc);
+		firstCurInput.addEventListener("input", calc);
+	}
+
+	window.onload = () => {
+		listeners();
+		calc();
+	};
+});

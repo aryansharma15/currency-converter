@@ -18,14 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	function calc() {
 		const inpCur = fromCurr.value;
 		const outCur = toCurr.value;
-		console.log(`https://api.exchangerate-api.com/v4/latest/${inpCur}`);
 
 		fetch(`https://api.exchangerate-api.com/v4/latest/${inpCur}`)
 			.then((res) => res.json())
 			.then((data) => {
 				const rate = data.rates[outCur];
 				const exchRate = document.getElementsByClassName("rate-box")[0];
-				console.log("exchRate: ", exchRate);
 
 				exchRate.textContent = `1 ${inpCur} = ${rate.toFixed(4)} ${outCur}`;
 

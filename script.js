@@ -37,11 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 		calc();
 
-		// conv_btn.addEventListener("click", () => {
-		// 	calc();
-		// 	console.log("Convert button pressed");
-		// });
-
 		fromCurr.addEventListener("change", calc);
 		toCurr.addEventListener("change", calc);
 
